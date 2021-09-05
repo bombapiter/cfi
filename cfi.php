@@ -63,8 +63,10 @@ class plgSystemCfi extends CMSPlugin
                 return;
             }
         } else {
-            $this->_doc->addScript(URI::root(true) . '/plugins/system/cfi/assets/cfi.js');
-            $this->_doc->addStylesheet(URI::root(true) . '/plugins/system/cfi/assets/cfi.css');
+            if($this->_app->isAdmin()) {
+                $this->_doc->addScript(URI::root(true) . '/plugins/system/cfi/assets/cfi.js');
+                $this->_doc->addStylesheet(URI::root(true) . '/plugins/system/cfi/assets/cfi.css');
+            }
         }
 
         $user = Factory::getUser();
